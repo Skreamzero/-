@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>SEO анализатор текста</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="description"
+      content="Сервис для анализа SEO параметров текста. Подсчитывает количество символов без пробелов, количество слов, частотность употребления слова в тексте."
+    />
+    <link rel="stylesheet" href="style.css" />
+    <meta name="robots" content="noindex, nofollow" />
+    <script type="text/javascript" defer src="script.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>SEO анализатор текста</h1>
+      <div class="textbody">
+        <div id="count_char_block">
+          <form name="multilineTextForm">
+            <h3 id="start_text">Введите или вставьте текст:</h3>
+
+            <textarea
+              class="input-text"
+              name="count_char_textarea"
+              id="count_char_textarea"
+              onchange="countChar(), countCharTwo()"
+              onkeyup="countChar(), countCharTwo()"
+            ></textarea>
+            <div id="start_buttons">
+              <input
+                class="but"
+                type="button"
+                value="Анализ"
+                onclick="doParsing()"
+              />
+              <input
+                class="but"
+                type="button"
+                value="Очистить"
+                onclick="doClearing()"
+              />
+
+              <input
+                class="but"
+                type="button"
+                value="Редактировать текст"
+                onclick="editText(), updateText(), doClearing()"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="seo-info">
+        <h3>Результат анализа:</h3>
+        <div class="side-container">
+          <div class="symbols">
+            Символов:
+            <input
+              class="noborder"
+              type="text"
+              id="count_char"
+              value="0"
+              readonly="readonly"
+            /><br />
+            Слов:
+            <input
+              class="noborder"
+              type="text"
+              id="count_words"
+              value="0"
+              readonly="readonly"
+            />
+          </div>
+          <div class="select">
+            <br />Сортировка:
+            <select
+              onchange="sortTable(this.options[this.selectedIndex].value)"
+            >
+              <option value="0">По алфавиту ↑</option>
+              <option value="1">По алфавиту ↓</option>
+              <option value="2">По частоте ↑</option>
+              <option selected="selected" value="3">По частоте ↓</option>
+            </select>
+          </div>
+        </div>
+        <div class="table-container">
+          <table cellpadding="0" cellspacing="0" border="0" id="table">
+            <thead>
+              <tr>
+                <th><h3>Слово</h3></th>
+                <th><h3>Частота</h3></th>
+                <th><h3>В процентах</h3></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div id="start_buttons">
+          <input
+            class="but"
+            type="button"
+            value="Снять выделение"
+            onclick="unHighlightWord()"
+          />
+          <input
+            class="but"
+            type="button"
+            value="Копировать"
+            onclick="doCopy()"
+            id="copy_button"
+            disabled="disabled"
+          />
+        </div>
+      </div>
+      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+      <p class="textbody">
+        при вставке текста и нажатии кнопки "обработать" нет возможности править
+        текст и обработать заново кнопка "обработать" и "очистить" не должны
+        исчезать, кнопка "обработать новый текст" не нужна, перезагрузки
+        страницы быть не должно нужна возможность править текст и обрабатывать
+        заново, без перезагрузки страницы<br /><br />
+      </p>
+    </div>
+  </body>
+</html>
